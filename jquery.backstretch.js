@@ -34,8 +34,8 @@
             if(src) {
                 var container = $("<div />").attr("id", "backstretch")
                                             .css({left: 0, top: 0, position: "fixed", overflow: "hidden", zIndex: -9999}),
-                    img = $("<img />").css({position: "relative", display: "none"})
-                                      .bind("load", function(e) {                                          
+                    img = $('<video autoplay="autoplay" />').css({position: "relative", display: "none"})
+                                      .bind("play", function(e) {                                          
                                           var self = $(this);
                                           imgRatio = $(e.target).width() / $(e.target).height();
     
@@ -73,7 +73,7 @@
                     if(settings.centeredX) $.extend(bgCSS, {left: "-" + bgOffset + "px"});
                 }
 
-                $("#backstretch img").width( bgWidth ).height( bgHeight ).css(bgCSS);
+                $("#backstretch video").width( bgWidth ).height( bgHeight ).css(bgCSS);
             } catch(err) {
                 // IE7 seems to trigger _adjustBG before the image is loaded.
                 // This try/catch block is a hack to let it fail gracefully.
